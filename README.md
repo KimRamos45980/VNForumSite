@@ -15,11 +15,11 @@ The plan is the to create a tagging system that will allow users to search for a
 
 ## Reason For Wanting To Create This Site:
 There are few resources available to help in creating a visual novel. Despite appreciating many of the functions and website
-formatting of some of popular forums. I personally found it difficult to search for artists that would/could help me.
+formatting of some popular forums. I personally found it difficult to search for artists that would/could help me.
 
 While seraching through a general forum website format. There is only so much information you can gain from just a thread title.
 Many times have threads with [CLOSED] in the title would still appear in [OPEN] searches; The reason: because the word open was 
 used just once somewhere else within the thread!
 
 It's also extremely time consuming to check through every thread to get a glance at an artist's art style or to see what they cannot/can create.  
-I personally wished there was a way to better filter out potential artists I might what to check out.
+I personally wished there was a way to better filter out potential artists I might want to check out.
