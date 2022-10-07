@@ -2,8 +2,10 @@
 
 namespace VNForumSite.Models
 {
+    // How to add application user class/to DbContext
+    // https://learn.microsoft.com/en-us/aspnet/core/security/authentication/customize-identity-model?view=aspnetcore-6.0#custom-user-data
     public class ApplicationUser : IdentityUser
     {
-        public string CustomTag { get; set; }
+        public string? CustomTag { get; set; }
     }
 }
