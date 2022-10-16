@@ -7,5 +7,12 @@ namespace VNForumSite.Models
     public class ApplicationUser : IdentityUser
     {
         public string? CustomTag { get; set; }
+
+    }
+
+    public class UserTags
+    {
+        public int Id { get; set; }
+        public string Tag { get; set; }
     }
 }

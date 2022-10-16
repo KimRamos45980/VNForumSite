@@ -15,5 +15,7 @@ namespace VNForumSite.Data
         {
             base.OnModelCreating(builder);
         }
+
+        public DbSet<VNForumSite.Models.UserTags> UserTags { get; set; }
     }
 }
