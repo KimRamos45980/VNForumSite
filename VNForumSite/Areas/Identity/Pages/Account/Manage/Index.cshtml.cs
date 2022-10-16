@@ -59,6 +59,9 @@ namespace VNForumSite.Areas.Identity.Pages.Account.Manage
             [Phone]
             [Display(Name = "Phone number")]
             public string PhoneNumber { get; set; }
+
+            [Display(Name = "Custom Tag(s)")]
+            public string UserTag { get; set; }
         }
 
         private async Task LoadAsync(ApplicationUser user)
