@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
+using VNForumSite.Data;
 using VNForumSite.Models;
 
 namespace VNForumSite.Areas.Identity.Pages.Account.Manage
@@ -17,13 +19,16 @@ namespace VNForumSite.Areas.Identity.Pages.Account.Manage
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly ApplicationDbContext _context;
 
         public IndexModel(
             UserManager<ApplicationUser> userManager,
-            SignInManager<ApplicationUser> signInManager)
+            SignInManager<ApplicationUser> signInManager,
+            ApplicationDbContext context)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _context = context;
         }
 
         /// <summary>
@@ -60,8 +65,10 @@ namespace VNForumSite.Areas.Identity.Pages.Account.Manage
             [Display(Name = "Phone number")]
             public string PhoneNumber { get; set; }
 
-            [Display(Name = "Custom Tag(s)")]
-            public string UserTag { get; set; }
+            //[Display(Name = "Custom Tag(s)")]
+
+            //public string UserTag { get; set; }
+            public List<UserTags> UserTags { get; set; }
         }
 
         private async Task LoadAsync(ApplicationUser user)
@@ -71,9 +78,14 @@ namespace VNForumSite.Areas.Identity.Pages.Account.Manage
 
             Username = userName;
 
+            List<UserTags> UserGenTags = await _context.UserTags.ToListAsync();
+            Input = new();
+            Input.UserTags = UserGenTags;
+
             Input = new InputModel
             {
-                PhoneNumber = phoneNumber
+                PhoneNumber = phoneNumber,
+                UserTags = UserGenTags
             };
         }
 
@@ -84,6 +96,10 @@ namespace VNForumSite.Areas.Identity.Pages.Account.Manage
             {
                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
+
+            //List<UserTags> UserGenTags = await _context.UserTags.ToListAsync();
+            //Input = new();
+            //Input.UserTags = UserGenTags;
 
             await LoadAsync(user);
             return Page();
