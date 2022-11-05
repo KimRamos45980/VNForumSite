@@ -67,7 +67,7 @@ namespace VNForumSite.Areas.Identity.Pages.Account.Manage
             public string PhoneNumber { get; set; }
 
             [Display(Name = "Custom Tag(s)")]
-            public string UserTag { get; set; }
+            public string CustomTag { get; set; }
 
             public List<UserTags> UserTags { get; set; }
         }
@@ -86,6 +86,7 @@ namespace VNForumSite.Areas.Identity.Pages.Account.Manage
             Input = new InputModel
             {
                 PhoneNumber = phoneNumber,
+                CustomTag = user.CustomTag,
                 UserTags = UserGenTags
             };
         }
@@ -126,6 +127,13 @@ namespace VNForumSite.Areas.Identity.Pages.Account.Manage
                     return RedirectToPage();
                 }
             }
+
+            if (Input.CustomTag != user.CustomTag)
+            {
+                user.CustomTag = Input.CustomTag;
+            }
+
+            await _userManager.UpdateAsync(user);
 
             await _signInManager.RefreshSignInAsync(user);
             StatusMessage = "Your profile has been updated";

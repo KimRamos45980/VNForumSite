@@ -21,8 +21,8 @@
                 <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
             </div>
             <div class="form-floating">
-                <label asp-for="Input.UserTag" class="form-label"></label>
-                <select asp-for="Input.UserTag" class="form-select">
+                <label asp-for="Input.CustomTag" class="form-label"></label>
+                <select asp-for="Input.CustomTag" class="form-select">
                     @foreach (UserTags tag in Model.Input.UserTags)
                     {
                         <option>@tag.Tag</option>
