@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using VNForumSite.Data;
+using VNForumSite.Data.Migrations;
 using VNForumSite.Models;
 
 namespace VNForumSite.Areas.Identity.Pages.Account.Manage
@@ -65,9 +66,9 @@ namespace VNForumSite.Areas.Identity.Pages.Account.Manage
             [Display(Name = "Phone number")]
             public string PhoneNumber { get; set; }
 
-            //[Display(Name = "Custom Tag(s)")]
+            [Display(Name = "Custom Tag(s)")]
+            public string UserTag { get; set; }
 
-            //public string UserTag { get; set; }
             public List<UserTags> UserTags { get; set; }
         }
 
@@ -96,10 +97,6 @@ namespace VNForumSite.Areas.Identity.Pages.Account.Manage
             {
                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
-
-            //List<UserTags> UserGenTags = await _context.UserTags.ToListAsync();
-            //Input = new();
-            //Input.UserTags = UserGenTags;
 
             await LoadAsync(user);
             return Page();
